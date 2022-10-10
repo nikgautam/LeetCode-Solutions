@@ -1,26 +1,23 @@
 class Solution {
     public String breakPalindrome(String palindrome) {
         
-        for( int i=0; i<palindrome.length(); i++ ){
-            
-            if( palindrome.length()%2!=0 && i == palindrome.length()/2)
-                continue;
-            
-            if( i == palindrome.length()-1 ){
-                palindrome = palindrome.substring( 0, palindrome.length()-1 ) + (char)( palindrome.charAt(i) + 1 );
-                return palindrome;
+        int n=palindrome.length();
+        if(n==1) return "";
+        char arr[]=palindrome.toCharArray();
+        char ch='a';
+        boolean done=false;
+        for(int i=0;i<n;i++) {
+            if(n%2==1 && i==n/2) continue;
+            if(ch!=arr[i]) {
+                arr[i]=ch;
+                done=true;
+                break;
             }
-            
-            if( palindrome.charAt(i) != 'a' ){
-                
-                palindrome = palindrome.substring(0, i) + 'a' + palindrome.substring( i+1 );
-                return palindrome;
-                
-            }
-            
         }
-        
-        return "";
+        if(!done) {
+            arr[n-1]=++ch;
+        }
+        return String.valueOf(arr);
         
     }
 }
