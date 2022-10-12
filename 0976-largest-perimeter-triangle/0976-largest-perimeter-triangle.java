@@ -9,7 +9,7 @@ class Solution {
             int a = nums[i];
             int b = nums[i-1];
             int c = nums[i-2];
-            if( isTrianglePossible(a,b,c) )
+            if( a < b + c )
                 return a+b+c;
         }
         
