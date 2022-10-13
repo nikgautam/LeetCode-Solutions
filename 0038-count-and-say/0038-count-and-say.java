@@ -1,19 +1,20 @@
 class Solution {
     public String countAndSay(int n) {
-        if(n == 1) return "1";
-        String res = countAndSay(n-1);
+        if(n==1)
+            return "1";
+        
+        String temp = countAndSay(n-1);
         StringBuilder ans = new StringBuilder();
-        int left = 0, right = 0;
-        while(right < res.length()){
-            int counter = 0;
-            while(right<res.length() && res.charAt(left) == res.charAt(right)){
-                counter++;
-                right++;
-            }
-            ans.append(Integer.toString(counter));
-            ans.append(String.valueOf(res.charAt(left)));
-            left = right;
+        for( int i=0; i<temp.length(); i++ ){
+            int count=1;
+            while( i+1 < temp.length() && temp.charAt(i) == temp.charAt(i+1) ){
+                count++;
+                i++;
+            }  
+ans.append(Integer.toString(count));
+            ans.append(String.valueOf(temp.charAt(i)));
         }
+        
         return ans.toString();
     }
 }
