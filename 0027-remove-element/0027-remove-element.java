@@ -27,6 +27,6 @@ class Solution {
             
         }
         
-        return nums.length-count;
+        return i;
     }
 }
