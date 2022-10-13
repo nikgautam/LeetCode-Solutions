@@ -9,33 +9,20 @@
 class Solution {
     public void deleteNode(ListNode node) {
         
-        ListNode prev=node,curr=node, next = curr.next;
+        ListNode prev=node,curr=node;
         
-        while( next != null ){
+        while( curr.next != null ){
             //Swapping
-            int swap = next.val;
-            next.val = curr.val;
+            int swap = curr.next.val;
+            curr.next.val = curr.val;
             curr.val = swap;
             
             prev = curr;
-            curr = next;
-            next = curr.next;
+            curr = curr.next;
+            //next = curr.next;
             
         }
         
         prev.next = null;
-        
-//         ListNode tempHead = node;
-        
-//         while( tempHead.next != null ){
-            
-//             int swap = tempHead.val;
-//             tempHead.val = tempHead.next.val;
-//             tempHead.next.val = swap;
-            
-//             tempHead = tempHead.next;
-//         }
-        
-//         tempHead = null;
     }
 }
