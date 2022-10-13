@@ -12,10 +12,8 @@ class Solution {
         ListNode prev=node,curr=node;
         
         while( curr.next != null ){
-            //Swapping
-            int swap = curr.next.val;
-            curr.next.val = curr.val;
-            curr.val = swap;
+            //Changing value
+            curr.val = curr.next.val;
             
             prev = curr;
             curr = curr.next;
