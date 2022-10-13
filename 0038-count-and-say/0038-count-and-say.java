@@ -1,24 +1,19 @@
 class Solution {
     public String countAndSay(int n) {
-        
-        String temp = "1", ans = "1";
-        int k=1;
-        while(k<n){
-            ans = "";
-            for(int i=0; i<temp.length(); i++){
-                int count=1;
-                while(i+1<temp.length() && temp.charAt(i) == temp.charAt(i+1)){
-                    count++;
-                    i++;
-                }
-                
-                ans = ans + String.valueOf(count) + temp.charAt(i);
+        if(n == 1) return "1";
+        String res = countAndSay(n-1);
+        StringBuilder ans = new StringBuilder();
+        int left = 0, right = 0;
+        while(right < res.length()){
+            int counter = 0;
+            while(right<res.length() && res.charAt(left) == res.charAt(right)){
+                counter++;
+                right++;
             }
-            temp = ans;
-            
-            k++;
+            ans.append(Integer.toString(counter));
+            ans.append(String.valueOf(res.charAt(left)));
+            left = right;
         }
-        
-        return ans;
+        return ans.toString();
     }
 }
